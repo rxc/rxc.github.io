@@ -1,0 +1,15 @@
+{
+    "manifest_version": 2,
+    "name": "Open in new tab",
+    "description": "Open URL in new tab instead of window",
+    "version": "1.0",
+    "permissions": [ "tabs" ],
+    "content_scripts": [{
+        "matches": [ "http://*/*" ],
+        "js": [ "open.js" ],
+        "run_at": "document_start"
+    }],
+    "background": {
+        "scripts": [ "bg.js" ]
+    }
+}
