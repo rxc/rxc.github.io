@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<meta charset='utf8'>
+<h1>都打开</h1>
+<article>
+<script>
+function do_open() {
+    var urls = document.querySelector('#urls').value.split('\n');
+    for (var i = 0; i < urls.length; i++) {
+        var url = urls[i];
+        if (!url) continue;
+        window.open('http://www.baidu.com/s?wd=' + encodeURIComponent(url.trim()));
+    }
+}
+</script>
+<textarea id=urls rows=30 cols=80></textarea>
+<br>
+<button onclick="do_open()">都打开</button>
+</article>
