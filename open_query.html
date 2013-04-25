@@ -8,7 +8,10 @@ function do_open() {
     for (var i = 0; i < urls.length; i++) {
         var url = urls[i];
         if (!url) continue;
-        window.open('http://www.baidu.com/s?wd=' + encodeURIComponent(url.trim()));
+        window.postMessage({
+            type: 'OPEN_TAB',
+            url: 'http://www.baidu.com/s?wd=' + encodeURIComponent(url.trim())
+        }, '*');
     }
 }
 </script>
