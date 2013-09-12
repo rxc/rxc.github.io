@@ -3,10 +3,17 @@
 <h1>打开不同搜索引擎</h1>
 <article>
 <script>
+function open_chrome(url) {
+    window.postMessage({
+        type: 'OPEN_TAB',
+        url: url
+    }, '*');
+}
 function do_open() {
-    var query = document.querySelector('#query').value;
+    var query = document.querySelector('#query').value.trim();
     var ses = document.querySelectorAll('.se');
     var f = window.open;
+    if (window.google && window.chrome) f = open_chrome;
     for (var i = 0; i < ses.length; i++) {
         if (!ses[i].checked) continue;
         f(ses[i].getAttribute('rel') + encodeURIComponent(query));
