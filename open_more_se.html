@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<meta charset='utf8'>
+<h1>打开不同搜索引擎</h1>
+<article>
+<script>
+function do_open() {
+    var query = document.querySelector('#query').value;
+    var ses = document.querySelectorAll('.se');
+    var f = window.open;
+    for (var i = 0; i < ses.length; i++) {
+        if (!ses[i].checked) continue;
+        f(ses[i].getAttribute('rel') + encodeURIComponent(query));
+    }
+}
+</script>
+<input id=query style='width:500px'><br>
+<div style='margin:5px'>
+    <input type=checkbox checked=checked class='se' rel='http://www.baidu.com/s?ie=utf-8&wd='>Baidu</input>
+    <input type=checkbox class='se' rel='http://www.so.com/s?ie=utf-8&q='>360</input>
+    <input type=checkbox class='se' rel='http://www.sogou.com/web?query='>Sogou</input>
+    <input type=checkbox class='se' rel='http://www.google.com.hk/#newwindow=1&q='>Google</input>
+    <input type=checkbox class='se' rel='http://cn.bing.com/search?q='>Bing</input>
+</div>
+<button onclick="do_open()">打开</button>
+</article>
