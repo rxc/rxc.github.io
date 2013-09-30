@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<meta charset='utf8'>
+<h1>url都打开</h1>
+<article>
+<script>
+function do_open() {
+    var urls = document.querySelector('#urls').value.split('\n');
+    for (var i = 0; i < urls.length; i++) {
+        var url = urls[i];
+        if (!url) continue;
+        window.postMessage({
+            type: 'OPEN_TAB',
+            url: url.trim()
+        }, '*');
+    }
+}
+</script>
+<textarea id=urls rows=30 cols=80></textarea>
+<br>
+<button onclick="do_open()">url都打开</button>
+</article>
